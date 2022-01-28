@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="FI.model::ZCV_Dynamic_Join_Demo" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="ZCV_Dynamic_Join_Demo.hdbcalculationview"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="ZT_DYNAMIC_JOIN_DEMO">
+    <resourceUri>ZT_DYNAMIC_JOIN_DEMO</resourceUri>
+  </DataSource>
+  <DataSource id="Aggregation_2$$$$ZT_DYNAMIC_JOIN_DEMO$$">
+    <resourceUri>ZT_DYNAMIC_JOIN_DEMO</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+    <viewAttributes>
+      <viewAttribute id="COUNTRY"/>
+      <viewAttribute id="COMPANY"/>
+      <viewAttribute id="PRODUCT"/>
+      <viewAttribute id="SELES" aggregationType="sum"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="ZT_DYNAMIC_JOIN_DEMO"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_2">
+    <viewAttributes>
+      <viewAttribute id="COUNTRY"/>
+      <viewAttribute id="PRODUCT"/>
+      <viewAttribute id="TOTAL_SELES" aggregationType="sum"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="Aggregation_2$$$$ZT_DYNAMIC_JOIN_DEMO$$">
+      <mapping xsi:type="Calculation:AttributeMapping" target="TOTAL_SELES" source="SELES"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" dynamic="true" joinType="inner" optimizeJoinColumns="false">
+    <viewAttributes>
+      <viewAttribute id="PRODUCT"/>
+      <viewAttribute id="SELES" aggregationType="sum"/>
+      <viewAttribute id="COUNTRY"/>
+      <viewAttribute id="TOTAL_SELES" aggregationType="sum"/>
+      <viewAttribute id="COMPANY"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="MARKET_SHARE" datatype="DECIMAL" length="15" scale="2" expressionLanguage="SQL">
+        <formula>&quot;SELES&quot;/&quot;TOTAL_SELES&quot;</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="Aggregation_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT" source="PRODUCT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SELES" source="SELES"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY" source="COMPANY"/>
+    </input>
+    <input node="Aggregation_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="TOTAL_SELES" source="TOTAL_SELES"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT" source="PRODUCT"/>
+    </input>
+    <joinAttribute name="COUNTRY"/>
+    <joinAttribute name="PRODUCT"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="PRODUCT" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT"/>
+      <keyMapping columnObjectName="Join_1" columnName="PRODUCT"/>
+    </attribute>
+    <attribute id="COUNTRY" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COUNTRY"/>
+      <keyMapping columnObjectName="Join_1" columnName="COUNTRY"/>
+    </attribute>
+    <attribute id="COMPANY" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMPANY"/>
+      <keyMapping columnObjectName="Join_1" columnName="COMPANY"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="TOTAL_SALES" order="4" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="SELES"/>
+      <measureMapping columnObjectName="Join_1" columnName="TOTAL_SELES"/>
+    </measure>
+    <measure id="SALES" order="5" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="SELES"/>
+      <measureMapping columnObjectName="Join_1" columnName="SELES"/>
+    </measure>
+    <measure id="MARKET_SHARE" order="6" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="MARKET_SHARE"/>
+      <measureMapping columnObjectName="Join_1" columnName="MARKET_SHARE"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="221" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="356"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Aggregation_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="302" y="356"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="221" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Aggregation_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="148"/>
+    </shape>
+    <shape modelObjectName="Aggregation_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="162"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

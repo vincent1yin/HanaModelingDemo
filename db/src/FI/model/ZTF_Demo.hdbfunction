@@ -1,0 +1,13 @@
+Function ZTF_Demo (IP_ENTITYID Integer)
+returns TABLE(
+    first_name Varchar2(10),
+    last_name  Varchar2(10)
+)
+LANGUAGE SQLSCRIPT
+SQL SECURITY INVOKER AS
+BEGIN
+RETURN
+  select
+   first_name, last_name from ZT_EMPLOYEE where business_entity_id =:IP_ENTITYID;
+end;
+

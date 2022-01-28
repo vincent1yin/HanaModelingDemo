@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="FI.model::ZCV_Trans_Filter_2" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="ZCV_Trans_Filter_2.hdbcalculationview"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="FI.model::ZCV_Trans_Filter_1">
+    <resourceUri>FI.model::ZCV_Trans_Filter_1</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="FI.model::ZCV_Trans_Filter_1" filterExpressionLanguage="SQL">
+  <attributes>
+    <attribute id="TTYP" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TTYP"/>
+      <keyMapping columnObjectName="ZCV_Trans_Filter_1" columnName="TTYP"/>
+    </attribute>
+    <attribute id="DAY" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DAY"/>
+      <keyMapping columnObjectName="ZCV_Trans_Filter_1" columnName="DAY"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="C" order="2" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="C"/>
+      <measureMapping columnObjectName="ZCV_Trans_Filter_1" columnName="C"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+
+  <filter>&quot;DAY&quot; &lt;&gt; ''</filter>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

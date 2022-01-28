@@ -1,0 +1,1 @@
+column table zt_cube_Empfact1 (empId nvarchar(3), Empdate date, Sal integer );

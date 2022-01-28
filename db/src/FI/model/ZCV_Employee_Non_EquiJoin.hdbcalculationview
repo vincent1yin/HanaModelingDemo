@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="FI.model::ZCV_Employee_Non_EquiJoin" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="ZCV_Employee_Non_EquiJoin.hdbcalculationview"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="ZT_EMPLOYEE">
+    <resourceUri>ZT_EMPLOYEE</resourceUri>
+  </DataSource>
+  <DataSource id="Projection_2$$$$ZT_EMPLOYEE$$">
+    <resourceUri>ZT_EMPLOYEE</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="BUSINESS_ENTITY_ID"/>
+      <viewAttribute id="FIRST_NAME"/>
+      <viewAttribute id="LAST_NAME"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="ZT_EMPLOYEE"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <viewAttributes>
+      <viewAttribute id="BUSINESS_ENTITY_ID"/>
+      <viewAttribute id="FIRST_NAME"/>
+      <viewAttribute id="LAST_NAME"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Projection_2$$$$ZT_EMPLOYEE$$"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:NonEquiJoinView" id="NonEquiJoin_1" cardinality="CN_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="BUSINESS_ENTITY_ID"/>
+      <viewAttribute id="FIRST_NAME"/>
+      <viewAttribute id="LAST_NAME"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Projection_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_ENTITY_ID" source="BUSINESS_ENTITY_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FIRST_NAME" source="FIRST_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAST_NAME" source="LAST_NAME"/>
+    </input>
+    <input node="Projection_2"/>
+    <joinAttribute leftColumn="BUSINESS_ENTITY_ID" rightColumn="BUSINESS_ENTITY_ID" operator="NE"/>
+    <joinAttribute leftColumn="FIRST_NAME" rightColumn="FIRST_NAME" operator="EQ"/>
+    <joinAttribute leftColumn="LAST_NAME" rightColumn="LAST_NAME" operator="EQ"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="NonEquiJoin_1">
+  <attributes>
+    <attribute id="BUSINESS_ENTITY_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BUSINESS_ENTITY_ID"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="BUSINESS_ENTITY_ID"/>
+    </attribute>
+    <attribute id="FIRST_NAME" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FIRST_NAME"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="FIRST_NAME"/>
+    </attribute>
+    <attribute id="LAST_NAME" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LAST_NAME"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="LAST_NAME"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="221.11302679000914" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92.00000000000001" y="356.9999988079071"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="302.00000000000006" y="356.9999988079071"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="NonEquiJoin_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="221.11302679000914" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="NonEquiJoin_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="203.97607421875"/>
+    </shape>
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="NonEquiJoin_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="203.97607421875"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

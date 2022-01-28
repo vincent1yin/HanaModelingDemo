@@ -1,0 +1,26 @@
+{
+  "DUMMY2": {
+    "target": {
+      "object": "DUMMY",
+      "schema": "SYS"
+    }
+  },
+  "M_TIME_DIMENSION_YEAR": {
+    "target": {
+      "object": "M_TIME_DIMENSION_YEAR",
+      "schema": "_SYS_BI"
+    }
+  },
+  "M_TIME_DIMENSION_MONTH": {
+    "target": {
+      "object": "M_TIME_DIMENSION_MONTH",
+      "schema": "_SYS_BI"
+    }
+  },
+  "M_FISCAL_CALENDAR": {
+    "target": {
+      "object": "M_FISCAL_CALENDAR",
+      "schema": "_SYS_BI"
+    }
+  }
+}

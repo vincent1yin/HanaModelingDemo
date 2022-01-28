@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="FI.model::ZCV_Optimize_Join_Columns" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="ZCV_Optimize_Join_Columns.hdbcalculationview"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="ZT_SALES_ITEMS">
+    <resourceUri>ZT_SALES_ITEMS</resourceUri>
+  </DataSource>
+  <DataSource id="ZT_ITEMS_MD">
+    <resourceUri>ZT_ITEMS_MD</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+    <viewAttributes>
+      <viewAttribute id="ITEM"/>
+      <viewAttribute id="EMPLOYEE"/>
+      <viewAttribute id="AMOUNT" aggregationType="max"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="ZT_SALES_ITEMS"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" joinType="leftOuter" optimizeJoinColumns="true">
+    <viewAttributes>
+      <viewAttribute id="ITEM"/>
+      <viewAttribute id="EMPLOYEE"/>
+      <viewAttribute id="AMOUNT" aggregationType="max"/>
+      <viewAttribute id="DESCRIPTION"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Aggregation_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ITEM" source="ITEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE" source="EMPLOYEE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AMOUNT" source="AMOUNT"/>
+    </input>
+    <input node="ZT_ITEMS_MD">
+      <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION" source="DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ITEM" source="ITEM"/>
+    </input>
+    <joinAttribute name="ITEM"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="ITEM" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ITEM"/>
+      <keyMapping columnObjectName="Join_1" columnName="ITEM"/>
+    </attribute>
+    <attribute id="EMPLOYEE" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPLOYEE"/>
+      <keyMapping columnObjectName="Join_1" columnName="EMPLOYEE"/>
+    </attribute>
+    <attribute id="DESCRIPTION" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DESCRIPTION"/>
+      <keyMapping columnObjectName="Join_1" columnName="DESCRIPTION"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="AMOUNT" order="3" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="AMOUNT"/>
+      <measureMapping columnObjectName="Join_1" columnName="AMOUNT"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="92" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="337"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Aggregation_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="148"/>
+    </shape>
+    <shape modelObjectName="ZT_ITEMS_MD" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="161"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

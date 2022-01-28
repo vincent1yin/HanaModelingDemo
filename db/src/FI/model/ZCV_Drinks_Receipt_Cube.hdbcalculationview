@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="FI.model::ZCV_Drinks_Receipt_Cube" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="ZCV_Drinks_Receipt_Cube.hdbcalculationview"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="DRINKS_RECEIPT">
+    <resourceUri>DRINKS_RECEIPT</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="DRINKS_RECEIPT">
+  <attributes>
+    <attribute id="DAY" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DAY"/>
+      <keyMapping columnObjectName="DRINKS_RECEIPT" columnName="DAY"/>
+    </attribute>
+    <attribute id="HOUR" order="2" displayAttribute="false" attributeHierarchyActive="false" keepFlag="true">
+      <descriptions defaultDescription="HOUR"/>
+      <keyMapping columnObjectName="DRINKS_RECEIPT" columnName="HOUR"/>
+    </attribute>
+    <attribute id="PRODUCT" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT"/>
+      <keyMapping columnObjectName="DRINKS_RECEIPT" columnName="PRODUCT"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes>
+    <calculatedAttribute id="cc_payment" order="6" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <keyCalculation datatype="DECIMAL" expressionLanguage="SQL" length="11" scale="2">
+        <formula>&quot;AMOUNT&quot; * &quot;CONVERSIONRATE&quot;</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+  </calculatedAttributes>
+  <baseMeasures>
+    <measure id="AMOUNT" order="4" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="AMOUNT"/>
+      <measureMapping columnObjectName="DRINKS_RECEIPT" columnName="AMOUNT"/>
+    </measure>
+    <measure id="CONVERSIONRATE" order="5" aggregationType="avg" measureType="simple">
+      <descriptions defaultDescription="CONVERSIONRATE"/>
+      <measureMapping columnObjectName="DRINKS_RECEIPT" columnName="CONVERSIONRATE"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="92" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape></shapes>
+</layout>
+</Calculation:scenario>

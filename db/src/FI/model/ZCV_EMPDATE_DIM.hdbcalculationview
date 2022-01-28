@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="FI.model::ZCV_EMPDATE_DIM" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="ZCV_EMPDATE_DIM.hdbcalculationview"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="ZT_CUBE_EMPDATE">
+    <resourceUri>ZT_CUBE_EMPDATE</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="ZT_CUBE_EMPDATE">
+  <attributes>
+    <attribute id="CALDATE" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CALDATE"/>
+      <keyMapping columnObjectName="ZT_CUBE_EMPDATE" columnName="CALDATE"/>
+    </attribute>
+    <attribute id="CALMONTH" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CALMONTH"/>
+      <keyMapping columnObjectName="ZT_CUBE_EMPDATE" columnName="CALMONTH"/>
+    </attribute>
+    <attribute id="CALYEAR" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CALYEAR"/>
+      <keyMapping columnObjectName="ZT_CUBE_EMPDATE" columnName="CALYEAR"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

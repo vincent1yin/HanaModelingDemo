@@ -1,0 +1,1 @@
+COLUMN TABLE "ZT_ITEMS_MD"(item NVARCHAR(30) ,description  NVARCHAR(30));

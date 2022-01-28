@@ -1,0 +1,1 @@
+column table zt_cube_Empdate (caldate  date,CALMONTH nvarchar(4) ,CALYEAR nvarchar(4));

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="FI.model::ZCV_Window_Function" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="ZCV_Window_Function.hdbcalculationview"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="ZT_EMPLOYEE">
+    <resourceUri>ZT_EMPLOYEE</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:WindowFunctionView" id="WindowFunction_1">
+    <viewAttributes>
+      <viewAttribute id="BUSINESS_ENTITY_ID"/>
+      <viewAttribute id="FIRST_NAME"/>
+      <viewAttribute id="LAST_NAME"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="ZT_EMPLOYEE">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_ENTITY_ID" source="BUSINESS_ENTITY_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FIRST_NAME" source="FIRST_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAST_NAME" source="LAST_NAME"/>
+    </input>
+    <function name="FIRST_VALUE">
+      <functionArgument></functionArgument>
+    </function>
+    <windowFunctionResultColumn>row_num</windowFunctionResultColumn>
+    <orderAttributes>
+      <orderAttribute direction="ASC">BUSINESS_ENTITY_ID</orderAttribute>
+    </orderAttributes>
+    <partitionAttributes>
+      <partitionAttribute>FIRST_NAME</partitionAttribute>
+      <partitionAttribute>LAST_NAME</partitionAttribute>
+    </partitionAttributes>
+  </calculationView>
+</calculationViews>
+<logicalModel id="WindowFunction_1">
+  <attributes>
+    <attribute id="BUSINESS_ENTITY_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BUSINESS_ENTITY_ID"/>
+      <keyMapping columnObjectName="WindowFunction_1" columnName="BUSINESS_ENTITY_ID"/>
+    </attribute>
+    <attribute id="FIRST_NAME" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FIRST_NAME"/>
+      <keyMapping columnObjectName="WindowFunction_1" columnName="FIRST_NAME"/>
+    </attribute>
+    <attribute id="LAST_NAME" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LAST_NAME"/>
+      <keyMapping columnObjectName="WindowFunction_1" columnName="LAST_NAME"/>
+    </attribute>
+    <attribute id="dd" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="dd"/>
+      <keyMapping columnObjectName="WindowFunction_1" columnName="row_num"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="WindowFunction_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="105" y="208"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

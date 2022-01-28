@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" id="FI.model::ZCV_Table_Function_Demo" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="ZCV_Table_Function_Demo.hdbcalculationview"/>
+<localVariables>
+  <variable id="IP_1" parameter="true">
+    <descriptions defaultDescription=""/>
+    <variableProperties mandatory="false" defaultValue="" datatype="INTEGER" length="10" scale="0">
+      <valueDomain type="empty"/>
+      <selection multiLine="false" type="SingleValue"/>
+      <derivationRule inputEnabled="true">
+        <resourceUri>ZT_EMPLOYEE</resourceUri>
+        <resultElementName>BUSINESS_ENTITY_ID</resultElementName>
+      </derivationRule>
+    </variableProperties>
+  </variable>
+</localVariables>
+<variableMappings/>
+<dataSources/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:TableFunctionView" id="TableFunction_1" tableFunctionName="ZTF_DEMO">
+    <viewAttributes/>
+    <calculatedViewAttributes/>
+    <variableMapping xsi:type="Variable:VariableMapping">
+      <targetVariable name="IP_ENTITYID"/>
+      <localVariable>IP_1</localVariable>
+    </variableMapping>
+  </calculationView>
+</calculationViews>
+<logicalModel id="TableFunction_1">
+  <attributes>
+    <attribute id="FIRST_NAME" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FIRST_NAME"/>
+      <keyMapping columnObjectName="TableFunction_1" columnName="FIRST_NAME"/>
+    </attribute>
+  
+    <attribute id="LAST_NAME" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LAST_NAME"/>
+  
+      <keyMapping columnObjectName="TableFunction_1" columnName="LAST_NAME"/>
+  
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="92" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="TableFunction_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

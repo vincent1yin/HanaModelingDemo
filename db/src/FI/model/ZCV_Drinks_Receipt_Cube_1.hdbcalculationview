@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="FI.model::ZCV_Drinks_Receipt_Cube_1" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="ZCV_Drinks_Receipt_Cube_1.hdbcalculationview"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="FI.model::ZCV_Drinks_Receipt_Cube">
+    <resourceUri>FI.model::ZCV_Drinks_Receipt_Cube</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="FI.model::ZCV_Drinks_Receipt_Cube">
+  <attributes>
+    <attribute id="DAY" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DAY"/>
+      <keyMapping columnObjectName="ZCV_Drinks_Receipt_Cube" columnName="DAY"/>
+    </attribute>
+  
+    <attribute id="HOUR" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="HOUR"/>
+  
+      <keyMapping columnObjectName="ZCV_Drinks_Receipt_Cube" columnName="HOUR"/>
+  
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="cc_payment" order="3" aggregationType="sum" measureType="simple" engineAggregation="none">
+      <descriptions defaultDescription="cc_payment"/>
+      <measureMapping columnObjectName="ZCV_Drinks_Receipt_Cube" columnName="cc_payment"/>
+    </measure>
+  
+    <measure id="AMOUNT" order="4" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="AMOUNT"/>
+      <measureMapping columnObjectName="ZCV_Drinks_Receipt_Cube" columnName="AMOUNT"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
