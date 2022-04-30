@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="FI.model::ZCV_Trans_Filter_2_N" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="ZCV_Trans_Filter_2_N.hdbcalculationview"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="FI.model::ZCV_Trans_Filter_1_N">
+    <resourceUri>FI.model::ZCV_Trans_Filter_1_N</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="FI.model::ZCV_Trans_Filter_1_N">
+  <attributes>
+    <attribute id="DAY" order="1" displayAttribute="false" attributeHierarchyActive="false" transparentFilter="true">
+      <descriptions defaultDescription="DAY"/>
+      <keyMapping columnObjectName="ZCV_Trans_Filter_1_N" columnName="DAY"/>
+    </attribute>
+    <attribute id="TNR" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TNR"/>
+      <keyMapping columnObjectName="ZCV_Trans_Filter_1_N" columnName="TNR"/>
+    </attribute>
+    <attribute id="TTYP" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TTYP"/>
+      <keyMapping columnObjectName="ZCV_Trans_Filter_1_N" columnName="TTYP"/>
+    </attribute>
+    <attribute id="C" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="C"/>
+      <keyMapping columnObjectName="ZCV_Trans_Filter_1_N" columnName="C"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

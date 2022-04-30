@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="FI.model::ZCV_Trans_Filter_1_N" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="ZCV_Trans_Filter_1_N.hdbcalculationview"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="EXAM_TRANS_FILTER">
+    <resourceUri>EXAM_TRANS_FILTER</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="EXAM_TRANS_FILTER">
+  <attributes>
+    <attribute id="DAY" order="1" displayAttribute="false" attributeHierarchyActive="false" transparentFilter="true">
+      <descriptions defaultDescription="DAY"/>
+      <keyMapping columnObjectName="EXAM_TRANS_FILTER" columnName="DAY"/>
+    </attribute>
+    <attribute id="TNR" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TNR"/>
+      <keyMapping columnObjectName="EXAM_TRANS_FILTER" columnName="TNR"/>
+    </attribute>
+    <attribute id="TTYP" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TTYP"/>
+      <keyMapping columnObjectName="EXAM_TRANS_FILTER" columnName="TTYP"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures>
+    <measure id="C" order="4" aggregationType="sum" measureType="simple" calculatedMeasureType="counter" datatype="BIGINT" length="">
+      <descriptions defaultDescription="C"/>
+      <exceptionAggregation>
+        <attribute attributeName="TNR"/>
+      </exceptionAggregation>
+      <formula>1</formula>
+      
+      
+      
+      
+      
+      </measure>
+  </calculatedMeasures>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
