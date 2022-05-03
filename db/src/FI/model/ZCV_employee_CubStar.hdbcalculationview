@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="FI.model::ZCV_employee_CubStar" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="ZCV_employee_CubStar.hdbcalculationview"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="ZT_CUBE_EMPFACT2">
+    <resourceUri>ZT_CUBE_EMPFACT2</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:AggregationView" id="Aggr_emp_fact">
+    <viewAttributes>
+      <viewAttribute id="EMPID"/>
+      <viewAttribute id="DEPTNAME"/>
+      <viewAttribute id="BONUS" aggregationType="sum"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="ZT_CUBE_EMPFACT2"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Aggr_emp_fact">
+  <attributes>
+    <attribute id="DEPTNAME" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DEPTNAME"/>
+      <keyMapping columnObjectName="Aggr_emp_fact" columnName="DEPTNAME"/>
+    </attribute>
+    <attribute id="EMPID$local">
+      <descriptions defaultDescription="EMPID"/>
+      <keyMapping columnObjectName="Aggr_emp_fact" columnName="EMPID"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="BONUS" order="2" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="BONUS"/>
+      <measureMapping columnObjectName="Aggr_emp_fact" columnName="BONUS"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+  <sharedDimensions>
+    <logicalJoin associatedObjectUri="FI.model::ZCV_EMPLOYEE_DIM">
+      <attributes>
+        <attributeRef>EMPID$local</attributeRef>
+      </attributes>
+      <associatedAttributeNames>
+        <attributeName>EMPID</attributeName>
+      </associatedAttributeNames>
+      <properties cardinality="C1_1" joinType="leftOuter" joinOperator="Equal"/>
+      <associatedAttributeFeatures/>
+    </logicalJoin>
+  </sharedDimensions>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="100" y="105"/>
+    
+      <rectangleSize width="150"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Aggr_emp_fact" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="113" y="253"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Aggr_emp_fact" modelObjectNameSpace="StarJoinViewNodeInput" modelObjectType="repository">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="151.357421875"/>
+    </shape>
+    <shape modelObjectName="FI.model::ZCV_EMPLOYEE_DIM" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="247.3515625"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
