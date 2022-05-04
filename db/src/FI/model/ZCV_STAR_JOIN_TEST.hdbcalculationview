@@ -12,7 +12,7 @@
   </DataSource>
 </dataSources>
 <calculationViews>
-  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="SQL">
     <viewAttributes>
       <viewAttribute id="EMPID"/>
       <viewAttribute id="EMPDATE"/>
@@ -20,6 +20,8 @@
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="ZT_CUBE_EMPFACT1"/>
+  
+    <filter>&quot;EMPID&quot; &lt;&gt; '124'</filter>
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
     <viewAttributes>
@@ -79,7 +81,12 @@
     </measure>
   </baseMeasures>
   <calculatedMeasures/>
-  <restrictedMeasures/>
+  <restrictedMeasures>
+    <measure id="RES_SAP" order="4" aggregationType="sum" datatype="INTEGER" length="10" scale="0" baseMeasure="SAL" restrictionExpressionLanguage="SQL">
+      <descriptions defaultDescription="RES_SAP_Label"/>
+      <restrictionExpression>(&quot;DEPTNAME&quot; = 'SAP' OR &quot;DEPTNAME&quot; = 'SAPAG')</restrictionExpression>
+    </measure>
+  </restrictedMeasures>
   <localDimensions/>
   <sharedDimensions>
     <logicalJoin associatedObjectUri="FI.model::ZCV_EMPDATE_DIM">
