@@ -20,7 +20,6 @@
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="ZT_CUBE_EMPFACT1"/>
-  
     <filter>&quot;EMPID&quot; &lt;&gt; '124'</filter>
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
