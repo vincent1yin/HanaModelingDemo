@@ -1,0 +1,18 @@
+{
+  "allow_external_access": {
+    "object_owner": {
+      "global_roles" : [
+        {
+          "roles" : [ "externalaccess_roleforOO" ]
+        }
+      ]
+    },
+    "application_user": {
+      "global_roles": [  
+        {
+        "roles" : [ "externalaccess_roleforAP" ]
+      }
+      ]
+    } 
+  }
+}
