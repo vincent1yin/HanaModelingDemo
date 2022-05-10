@@ -2,42 +2,35 @@
 <Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" id="FI.model::ZCV_Table_Function_Demo" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
 <descriptions defaultDescription="ZCV_Table_Function_Demo.hdbcalculationview"/>
 <localVariables>
-  <variable id="IP_1" parameter="true">
+  <variable id="IP_ENTITY_ID" parameter="true">
     <descriptions defaultDescription=""/>
-    <variableProperties mandatory="false" defaultValue="" datatype="INTEGER" length="10" scale="0">
+    <variableProperties mandatory="false" defaultValue="" datatype="INTEGER">
       <valueDomain type="empty"/>
       <selection multiLine="false" type="SingleValue"/>
-      <derivationRule inputEnabled="true">
-        <resourceUri>ZT_EMPLOYEE</resourceUri>
-        <resultElementName>BUSINESS_ENTITY_ID</resultElementName>
-      </derivationRule>
     </variableProperties>
   </variable>
 </localVariables>
 <variableMappings/>
 <dataSources/>
 <calculationViews>
-  <calculationView xsi:type="Calculation:TableFunctionView" id="TableFunction_1" tableFunctionName="ZTF_DEMO">
+  <calculationView xsi:type="Calculation:TableFunctionView" id="TableFunction_1" tableFunctionName="FI.model::ZTF_Demo">
     <viewAttributes/>
     <calculatedViewAttributes/>
     <variableMapping xsi:type="Variable:VariableMapping">
       <targetVariable name="IP_ENTITYID"/>
-      <localVariable>IP_1</localVariable>
+      <localVariable>IP_ENTITY_ID</localVariable>
     </variableMapping>
   </calculationView>
 </calculationViews>
 <logicalModel id="TableFunction_1">
   <attributes>
-    <attribute id="FIRST_NAME" order="1" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="LAST_NAME_1" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LAST_NAME"/>
+      <keyMapping columnObjectName="TableFunction_1" columnName="LAST_NAME"/>
+    </attribute>
+    <attribute id="FIRST_NAME_1" order="2" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="FIRST_NAME"/>
       <keyMapping columnObjectName="TableFunction_1" columnName="FIRST_NAME"/>
-    </attribute>
-  
-    <attribute id="LAST_NAME" order="2" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="LAST_NAME"/>
-  
-      <keyMapping columnObjectName="TableFunction_1" columnName="LAST_NAME"/>
-  
     </attribute>
   </attributes>
   <calculatedAttributes/>

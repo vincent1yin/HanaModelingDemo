@@ -1,13 +1,13 @@
-Function ZTF_Demo (IP_ENTITYID Integer)
+Function "FI.model::ZTF_Demo" (IP_ENTITYID Integer)
 returns TABLE(
-    first_name Varchar2(10),
-    last_name  Varchar2(10)
+    FIRST_NAME Varchar2(20),
+    LAST_NAME  Varchar2(20)
 )
 LANGUAGE SQLSCRIPT
 SQL SECURITY INVOKER AS
 BEGIN
 RETURN
   select
-   first_name, last_name from ZT_EMPLOYEE where business_entity_id =:IP_ENTITYID;
+  FIRST_NAME, LAST_NAME from ZT_EMPLOYEE where business_entity_id =:IP_ENTITYID;
 end;
 

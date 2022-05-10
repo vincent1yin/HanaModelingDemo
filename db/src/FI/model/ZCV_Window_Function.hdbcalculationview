@@ -22,7 +22,7 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="LAST_NAME" source="LAST_NAME"/>
     </input>
     <function name="FIRST_VALUE">
-      <functionArgument></functionArgument>
+      <functionArgument>&quot;BUSINESS_ENTITY_ID&quot;</functionArgument>
     </function>
     <windowFunctionResultColumn>row_num</windowFunctionResultColumn>
     <orderAttributes>

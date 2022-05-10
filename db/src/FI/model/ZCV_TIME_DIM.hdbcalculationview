@@ -3,10 +3,23 @@
 <descriptions defaultDescription="ZCV_TIME_DIM.hdbcalculationview"/>
 <localVariables/>
 <variableMappings/>
-<dataSources/>
+<dataSources>
+  <DataSource id="ZT_ITEMS_MD">
+    <resourceUri>ZT_ITEMS_MD</resourceUri>
+  </DataSource>
+</dataSources>
 <calculationViews/>
-<logicalModel>
-  <attributes/>
+<logicalModel id="ZT_ITEMS_MD">
+  <attributes>
+    <attribute id="ITEM" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ITEM"/>
+      <keyMapping columnObjectName="ZT_ITEMS_MD" columnName="ITEM"/>
+    </attribute>
+    <attribute id="DESCRIPTION" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DESCRIPTION"/>
+      <keyMapping columnObjectName="ZT_ITEMS_MD" columnName="DESCRIPTION"/>
+    </attribute>
+  </attributes>
   <calculatedAttributes/>
   <baseMeasures/>
   <calculatedMeasures/>
