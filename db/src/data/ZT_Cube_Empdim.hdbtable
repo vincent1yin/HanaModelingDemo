@@ -1,1 +1,1 @@
-column table ZT_cube_Empdim (empId nvarchar(3) ,Empname nvarchar(20));
+column table ZT_cube_Empdim (empId nvarchar(3) ,Empname nvarchar(20)) PARTITION BY HASH(empId) PARTITIONS 2;

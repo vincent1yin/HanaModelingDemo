@@ -5,7 +5,6 @@
 <variableMappings/>
 <dataSources>
   <DataSource id="ZT_CUBE_EMPDIM" partitionedExecution="true" clientColumn="EMPID">
-    <partitionAttributeName>EMPID</partitionAttributeName>
     <resourceUri>ZT_CUBE_EMPDIM</resourceUri>
   </DataSource>
 </dataSources>
