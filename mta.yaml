@@ -1,5 +1,5 @@
 _schema-version: "2.1"
-ID: HanaDemo1
+ID: HC300Demo
 version: 0.0.1
 modules:
 - name: db
@@ -17,6 +17,10 @@ modules:
 resources:
 - name: hdi_db
   type: com.sap.xs.hdi-container
+  parameters:
+    config:
+      schema: FINANAVH_1
+    service-name: HC300-hdidb
   properties:
     hdi-container-name: ${service-name}
 - name: cross-container-service-1

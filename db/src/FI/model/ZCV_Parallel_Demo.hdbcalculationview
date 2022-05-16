@@ -10,7 +10,7 @@
   </DataSource>
 </dataSources>
 <calculationViews>
-  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+  <calculationView xsi:type="Calculation:ProjectionView" id="startParallelization">
     <viewAttributes>
       <viewAttribute id="EMPID"/>
       <viewAttribute id="EMPNAME"/>
@@ -18,34 +18,34 @@
     <calculatedViewAttributes/>
     <input node="ZT_CUBE_EMPDIM"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2" filterExpressionLanguage="SQL">
+  <calculationView xsi:type="Calculation:ProjectionView" id="runParallel">
     <viewAttributes>
       <viewAttribute id="EMPID"/>
       <viewAttribute id="EMPNAME"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="Projection_1"/></calculationView>
-  <calculationView xsi:type="Calculation:UnionView" id="Union_2" partitionedExecution="true">
+    <input node="startParallelization"/></calculationView>
+  <calculationView xsi:type="Calculation:UnionView" id="stopParallelization" partitionedExecution="true">
     <viewAttributes>
       <viewAttribute id="EMPID"/>
       <viewAttribute id="EMPNAME"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="Projection_2">
+    <input node="runParallel" emptyUnionBehavior="NO_ROW">
       <mapping xsi:type="Calculation:AttributeMapping" target="EMPID" source="EMPID"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="EMPNAME" source="EMPNAME"/>
     </input>
   </calculationView>
 </calculationViews>
-<logicalModel id="Union_2">
+<logicalModel id="stopParallelization">
   <attributes>
     <attribute id="EMPID" order="1" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="EMPID"/>
-      <keyMapping columnObjectName="Union_2" columnName="EMPID"/>
+      <keyMapping columnObjectName="stopParallelization" columnName="EMPID"/>
     </attribute>
     <attribute id="EMPNAME" order="2" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="EMPNAME"/>
-      <keyMapping columnObjectName="Union_2" columnName="EMPNAME"/>
+      <keyMapping columnObjectName="stopParallelization" columnName="EMPNAME"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>
@@ -61,16 +61,16 @@
       <rectangleSize width="160"/>
     </shape>
   
-    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+    <shape expanded="true" modelObjectName="startParallelization" modelObjectNameSpace="CalculationView">
       <upperLeftCorner x="92" y="427"/>
-      <rectangleSize height="30" width="160"/>
+      <rectangleSize height="30" width="189"/>
     </shape>
-    <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+    <shape expanded="true" modelObjectName="runParallel" modelObjectNameSpace="CalculationView">
       <upperLeftCorner x="92" y="322"/>
       <rectangleSize height="30" width="160"/>
     </shape>
   
-    <shape expanded="true" modelObjectName="Union_2" modelObjectNameSpace="CalculationView">
+    <shape expanded="true" modelObjectName="stopParallelization" modelObjectNameSpace="CalculationView">
       <upperLeftCorner x="92" y="217"/>
       <rectangleSize height="30" width="160"/>
     </shape>

@@ -2,7 +2,7 @@
   "FI.model.external_access_demos::ORDERS_DATA_RANK": {
     "target": {
       "object": "ORDERS_DATA_RANK",
-      "schema": "SAMPLE1"
+      "schema": "HC300_SCHEMA"
     }
   }
 }

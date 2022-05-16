@@ -99,30 +99,24 @@ Below Sql script used to  insert intial data into tables:
            zt_cube_Empfact2.hdbtable
          Sql Script:
            /* This Dimension table is Employee name table (haveEmpId and EmpName) */
-           drop table ZT_cube_Empdim;
-           create column table ZT_cube_Empdim (empId nvarchar(3) ,Empname nvarchar(20));
-           insert into ZT_cube_Empdim values(‘A1’,‘Shivaji’);
-           insert into ZT_cube_Empdim values(‘B1’,‘Anand’);
-           insert into ZT_cube_Empdim values(‘C1’,‘Stephan’);
-           /* This Dimension table is  a calendar table (date,month and year) */
-           drop table zt_cube_Empdate;
-           create column table zt_cube_Empdate (caldate  date,CALMONTH nvarchar(4) ,CALYEAR nvarchar(4));
-           insert into zt_cube_Empdate values(‘20100101’,’01’,‘2010’);
-           insert into zt_cube_Empdate values(‘20110101’,’02’,‘2011’);
-           insert into zt_cube_Empdate(‘20120101’,’03’,‘2012’);
+           
+           insert into ZT_cube_Empdim values('A1','Shivaji');
+           insert into ZT_cube_Empdim values('B1','Anand');
+           insert into ZT_cube_Empdim values('C1','Stephan');
+
+           insert into zt_cube_Empdate values('20100101','01','2010');
+           insert into zt_cube_Empdate values('20110101','02','2011');
+           insert into zt_cube_Empdate values('20120101','03','2012');
               ——————————————–FACT Tables —————————————-
-            /* This Fact table describes Employee Salary */
-            drop table zt_cube_Empfact1;
-            Create column table zt_cube_Empfact1 (empId nvarchar(3), Empdate date, Sal integer );
-            insert into  zt_cube_Empfact1 values(‘A1’,‘20100101’,4000);
-            insert into  zt_cube_Empfact1 values(‘B1’,‘20110101’,6000);
-            insert into  zt_cube_Empfact1 values(‘C1’,‘20120101’,8000);
-            /* This Fact table describes Employee Bonus */
-            drop table zt_cube_Empfact2;
-            Create column zt_cube_Empfact2 Empfact2 (empId nvarchar(3), deptName nvarchar(20), Bonus integer );
-            insert into zt_cube_Empfact2 values(‘A1’,‘SAP’,1000);
-            insert into zt_cube_Empfact2 values(‘B1’,‘NS2’,2000);
-            insert into zt_cube_Empfact2 values(‘C1’,‘SAPAG’,3000);
+            
+            insert into  zt_cube_Empfact1 values('A1','20100101',4000);
+            insert into  zt_cube_Empfact1 values('B1','20110101',6000);
+            insert into  zt_cube_Empfact1 values('C1','20120101',8000);
+
+            
+            insert into zt_cube_Empfact2 values('A1','SAP',1000);
+            insert into zt_cube_Empfact2 values('B1','NS2',2000);
+            insert into zt_cube_Empfact2 values('C1','SAPAG',3000);
          Link:
              https://blogs.sap.com/2014/02/13/hana-sp07-star-join/
 7.  Calling Table functions in SAP HANA calculation views
@@ -156,6 +150,26 @@ Below Sql script used to  insert intial data into tables:
     Script:
 
     Link:
+
+
+10. Create External Schema
+
+     10.1 CREATE SCHEMA hc300_schema;
+     10.2 Create table:
+            create column table HC300_SCHEMA.ORDERS_DATA_RANK"(day DATE,TNR NVARCHAR(10),TTYP NVARCHAR(10));
+            insert into  HC300_SCHEMA.ORDERS_DATA_RANK  values ('2015-10-10','1','SL');
+            insert into  HC300_SCHEMA.ORDERS_DATA_RANK  values ('2015-10-11','1','SL');
+     10.3 create the User and role:
+             create role "externalaccess_roleforOO";
+             create role "externalaccess_roleforAP";
+             grant select on schema HC300_SCHEMA to  "externalaccess_roleforOO" with grant option;
+             grant select on schema HC300_SCHEMA to  "externalaccess_roleforAP" ;
+             create user UPS_GRANTOR password "Password1" NO FORCE_FIRST_PASSWORD_CHANGE;
+             grant  "externalaccess_roleforOO" to UPS_GRANTOR with admin option;
+             grant  "externalaccess_roleforAP" to UPS_GRANTOR with admin option;
+     10.4.   Define the User_provided Service
+     10.5    
+ 
         
       
 

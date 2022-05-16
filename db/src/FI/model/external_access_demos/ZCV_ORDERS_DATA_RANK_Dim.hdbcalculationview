@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="FI.model.external_access_demos::ZCV_ORDERS_DATA_RANK_Dim" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="FI.model.external_access_demos::ZCV_ORDERS_DATA_RANK_Dim" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
 <descriptions defaultDescription="ZCV_ORDERS_DATA_RANK_Dim.hdbcalculationview"/>
 <localVariables/>
 <variableMappings/>
@@ -11,29 +11,17 @@
 <calculationViews/>
 <logicalModel id="FI.model.external_access_demos::ORDERS_DATA_RANK">
   <attributes>
-    <attribute id="ORDER_NO" order="1" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="ORDER_NO"/>
-      <keyMapping columnObjectName="ORDERS_DATA_RANK" columnName="ORDER_NO"/>
+    <attribute id="DAY" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DAY"/>
+      <keyMapping columnObjectName="ORDERS_DATA_RANK" columnName="DAY"/>
     </attribute>
-    <attribute id="CUST_NO" order="2" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="CUST_NO"/>
-      <keyMapping columnObjectName="ORDERS_DATA_RANK" columnName="CUST_NO"/>
+    <attribute id="TNR" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TNR"/>
+      <keyMapping columnObjectName="ORDERS_DATA_RANK" columnName="TNR"/>
     </attribute>
-    <attribute id="PROD_NO" order="3" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="PROD_NO"/>
-      <keyMapping columnObjectName="ORDERS_DATA_RANK" columnName="PROD_NO"/>
-    </attribute>
-    <attribute id="QUANTITY" order="4" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="QUANTITY"/>
-      <keyMapping columnObjectName="ORDERS_DATA_RANK" columnName="QUANTITY"/>
-    </attribute>
-    <attribute id="PRICE" order="5" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="PRICE"/>
-      <keyMapping columnObjectName="ORDERS_DATA_RANK" columnName="PRICE"/>
-    </attribute>
-    <attribute id="ORDERED_TIME" order="6" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="ORDERED_TIME"/>
-      <keyMapping columnObjectName="ORDERS_DATA_RANK" columnName="ORDERED_TIME"/>
+    <attribute id="TTYP" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TTYP"/>
+      <keyMapping columnObjectName="ORDERS_DATA_RANK" columnName="TTYP"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>
@@ -45,7 +33,6 @@
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
       <upperLeftCorner x="40" y="85"/>
-    </shape>
-  </shapes>
+    </shape></shapes>
 </layout>
 </Calculation:scenario>
