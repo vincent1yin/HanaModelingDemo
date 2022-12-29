@@ -6,8 +6,9 @@ Below Sql script used to  insert intial data into tables:
           ZT_EXAM_TRANS_FILTER.hdbtable
       Sql Script:
           create column table ZT_EXAM_TRANS_FILTER(day DATE,TNR NVARCHAR(10),TTYP NVARCHAR(10));
-          insert into ZT_EXAM_TRANS_FILTER values ('2015-10-10','1','SL');
-          insert into ZT_EXAM_TRANS_FILTER values ('2015-10-11','1','SL');
+          truncate table EXAM_TRANS_FILTER;
+          insert into EXAM_TRANS_FILTER values ('2015-10-10','1','SL');
+          insert into EXAM_TRANS_FILTER values ('2015-10-11','1','SL');
       Link:
          https://blogs.sap.com/2018/02/01/usage-of-transparent-filter-flag/
 2. Usage of “Keep Flag”:
@@ -18,6 +19,7 @@ Below Sql script used to  insert intial data into tables:
           ZT_DRINKS_RECEIPT.hdbtable
       Sql Script:
           CREATE COLUMN TABLE "DRINKS_RECEIPT" (day Date, hour VARCHAR(2), PRODUCT NVARCHAR(40),AMOUNT Decimal(10,2), CONVERSIONRATE Decimal(4,2));
+          truncate table DRINKS_RECEIPT;
            INSERT INTO "DRINKS_RECEIPT" VALUES ('2017/02/02','10','Wine',30,1);
            INSERT INTO "DRINKS_RECEIPT" VALUES ('2017/02/02','18','Wine',20,2);
            INSERT INTO "DRINKS_RECEIPT" VALUES ('2017/02/02','10','Beer',40,1);
@@ -38,6 +40,7 @@ Below Sql script used to  insert intial data into tables:
           ZT_DYNAMIC_JOIN_DEMO.hdbtable
         Sql Script:
           Create Column TABLE "ZT_DYNAMIC_JOIN_DEMO"(COUNTRY VARCHAR2(20),COMPANY VARCHAR2(2),PRODUCT VARCHAR2(30),SELES Decimal(10,2));
+          truncate table ZT_DYNAMIC_JOIN_DEMO;
           INSERT INTO "ZT_DYNAMIC_JOIN_DEMO" VALUES('US','A','Paper','100');
           INSERT INTO "ZT_DYNAMIC_JOIN_DEMO" VALUES('US','A','Envelopes','20');
           INSERT INTO "ZT_DYNAMIC_JOIN_DEMO" VALUES('US','A','Pens','30');
@@ -64,6 +67,7 @@ Below Sql script used to  insert intial data into tables:
         Sql Script:
           CREATE COLUMN TABLE "ZT_ITEMS_MD"(item  NVARCHAR(30), description NVARCHAR(30));
           CREATE COLUMN TABLE "ZT_SALES_ITEMS"(item NVARCHAR(30),employee NVARCHAR(30), amount DECIMAL(10,2));
+          truncate table ZT_ITEMS_MD;
           insert into "ZT_ITEMS_MD" values ('001','diapers');
           insert into "ZT_ITEMS_MD" values ('002','diapers');
           insert into "ZT_ITEMS_MD" values ('003','milk');
@@ -81,6 +85,7 @@ Below Sql script used to  insert intial data into tables:
           ZT_EMPLOYEE.hdbtable
         Sql Script:
            CREATE COLUMN TABLE ZT_EMPLOYEE( business_entity_id INTEGER ,first_name VARCHAR2(20) ,last_name VARCHAR2(20), primary k(business_entity_id,first_name,last_name));
+           truncate table ZT_EMPLOYEE;
            INSERT INTO "ZT_EMPLOYEE" VALUES('1','Subhas','Bose');
            INSERT INTO "ZT_EMPLOYEE" VALUES('1','Rabindranath','Tagore');
            INSERT INTO "ZT_EMPLOYEE" VALUES('1','Jon','Doe');
@@ -100,20 +105,21 @@ Below Sql script used to  insert intial data into tables:
          Sql Script:
            /* This Dimension table is Employee name table (haveEmpId and EmpName) */
            
+           truncate table ZT_cube_Empdim;
            insert into ZT_cube_Empdim values('A1','Shivaji');
            insert into ZT_cube_Empdim values('B1','Anand');
            insert into ZT_cube_Empdim values('C1','Stephan');
-
+           truncate table zt_cube_Empdate;
            insert into zt_cube_Empdate values('20100101','01','2010');
            insert into zt_cube_Empdate values('20110101','02','2011');
            insert into zt_cube_Empdate values('20120101','03','2012');
               ——————————————–FACT Tables —————————————-
-            
+            truncate table zt_cube_Empfact1;
             insert into  zt_cube_Empfact1 values('A1','20100101',4000);
             insert into  zt_cube_Empfact1 values('B1','20110101',6000);
             insert into  zt_cube_Empfact1 values('C1','20120101',8000);
 
-            
+            truncate table zt_cube_Empfact2;
             insert into zt_cube_Empfact2 values('A1','SAP',1000);
             insert into zt_cube_Empfact2 values('B1','NS2',2000);
             insert into zt_cube_Empfact2 values('C1','SAPAG',3000);

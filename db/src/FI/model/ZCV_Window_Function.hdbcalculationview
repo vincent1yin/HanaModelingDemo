@@ -8,6 +8,7 @@
     <resourceUri>ZT_EMPLOYEE</resourceUri>
   </DataSource>
 </dataSources>
+<snapshotProcedures/>
 <calculationViews>
   <calculationView xsi:type="Calculation:WindowFunctionView" id="WindowFunction_1">
     <viewAttributes>

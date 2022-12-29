@@ -8,6 +8,7 @@
     <resourceUri>DRINKS_RECEIPT</resourceUri>
   </DataSource>
 </dataSources>
+<snapshotProcedures/>
 <calculationViews/>
 <logicalModel id="DRINKS_RECEIPT">
   <attributes>
