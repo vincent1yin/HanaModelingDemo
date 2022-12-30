@@ -8,6 +8,7 @@
     <resourceUri>ZT_CUBE_EMPDIM</resourceUri>
   </DataSource>
 </dataSources>
+<snapshotProcedures/>
 <calculationViews/>
 <logicalModel id="ZT_CUBE_EMPDIM">
   <attributes>
